@@ -1,0 +1,169 @@
+!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUNA Banque - Connexion et Inscription</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #4e54c8, #8f94fb);
+            margin: 0;
+            overflow: hidden;
+            animation: bgAnimation 10s infinite alternate;
+        }
+        @keyframes bgAnimation {
+            0% { background: linear-gradient(to bottom right, #4e54c8, #8f94fb); }
+            100% { background: linear-gradient(to bottom right, #8f94fb, #4e54c8); }
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            width: 350px;
+            text-align: center;
+            animation: slideIn 1s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #4e54c8;
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease;
+        }
+        input {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            animation: fadeIn 2.5s ease;
+        }
+        input:focus {
+            border-color: #4e54c8;
+            outline: none;
+        }
+        button {
+            width: 80%;
+            padding: 15px;
+            background: #4e54c8;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+            margin-top: 10px;
+            animation: fadeIn 3s ease;
+        }
+        button:hover {
+            background: #3e44b8;
+        }
+        .social-buttons {
+            margin: 20px 0;
+            animation: fadeIn 3.5s ease;
+        }
+        .social-buttons button {
+            margin: 5px 0;
+            width: 80%;
+            padding: 15px;
+            border-radius: 10px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .social-buttons .facebook { background: #3b5998; }
+        .social-buttons .google { background: #db4437; }
+        .social-buttons .twitter { background: #1da1f2; }
+        .social-buttons .linkedin { background: #0077b5; }
+        .social-buttons button:hover {
+            opacity: 0.8;
+        }
+        .toggle-link {
+            color: #4e54c8;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 10px;
+            display: block;
+            animation: fadeIn 4s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="form-title">Connexion</h1>
+        <form id="login-form" onsubmit="handleSubmit(event)">
+            <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+        <div class="social-buttons">
+            <button class="facebook" type="button" onclick="handleSocialLogin('Facebook')">Se connecter avec Facebook</button>
+            <button class="google" type="button" onclick="handleSocialLogin('Google')">Se connecter avec Google</button>
+            <button class="twitter" type="button" onclick="handleSocialLogin('Twitter')">Se connecter avec Twitter</button>
+            <button class="linkedin" type="button" onclick="handleSocialLogin('LinkedIn')">Se connecter avec LinkedIn</button>
+        </div>
+        <span class="toggle-link" onclick="toggleForm()">Pas de compte? Inscrivez-vous</span>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const formTitle = document.getElementById('form-title');
+            const loginForm = document.getElementById('login-form');
+            const toggleLink = document.querySelector('.toggle-link');
+            
+            if (formTitle.textContent === 'Connexion') {
+                formTitle.textContent = 'Inscription';
+                loginForm.innerHTML = `
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Mot de passe" required>
+                    <button type="submit">S'inscrire</button>
+                `;
+                toggleLink.textContent = 'Déjà un compte? Connectez-vous';
+            } else {
+                formTitle.textContent = 'Connexion';
+                loginForm.innerHTML = `
+                    <input type="text" name="username" placeholder="Nom d'utilisateur" required>
+                    <input type="password" name="password" placeholder="Mot de passe" required>
+                    <button type="submit">Se connecter</button>
+                `;
+                toggleLink.textContent = 'Pas de compte? Inscrivez-vous';
+            }
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formTitle = document.getElementById('form-title');
+            const email = document.querySelector('input[name="email"]') ? document.querySelector('input[name="email"]').value : null;
+            const message = formTitle.textContent === 'Inscription' ? 'Merci de vous être inscrit!' : 'Vous vous êtes connecté avec succès!';
+            
+            alert(message);
+            if (email) {
+                sendNotification(email, message);
+            }
+        }
+        
+        function handleSocialLogin(platform) {
+            alert(`Connexion avec ${platform} en cours...`);
+            // Ici, tu pourrais ajouter des appels API pour la véritable connexion sociale
+        }
+        
+        function sendNotification(email, message) {
+            console.log(`Envoi d'un email à ${email}: ${message}`);
+            // Dans une application réelle, tu utiliserais une API d'email pour envoyer l'email
+        }
+    </script>
+</body>
+</html>
