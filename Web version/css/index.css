@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+/*General settings*/
+*{
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(204, 200, 200);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+/*Seperating containers*/
+.content{
+    position: absolute;
+    top: 50px;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+/*1. Navigation bar*/
+.navbar{
+    padding: 5px 10px 6px 10px;
+    border-bottom: 3px solid rgb(2, 2, 78);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: 50;
+}
+.navbar a{
+    margin-left: 35px;
+}
+nav{
+    display: inline-block;
+    margin-left: 35px;
+    font-weight: bold;
+    color: rgb(1, 5, 27);
+    padding-right: 25px;
+}
+button{
+    padding: 5px;
+    margin-left: 35px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 3.5px;
+}
+/*2. Sidebar*/
+#sidebar{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 250px;
+    padding: 5px 1em;
+    background-color: rgb(1, 5, 27);
+    border-right: 1px solid var(--line-clr);
+    margin-right: 15px;
+    position: sticky;
+    top: 0;
+    align-self: start;
+}
+#sidebar ul{
+    list-style: none;
+    li img{
+        width: 25px;
+        height: 100%;
+    }
+    span{
+        color: white;
+    }
+}
+#sidebar button{
+    border-radius: .5em;
+    padding: .5em .5em;
+    height: 50px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+#sidebar > ul > li:first-child{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    .logo{
+        font-weight: 600;
+    }
+}
+#sidebar ul li.active a{
+    color: var(--accent-clr);
+
+    img{
+        fill: var(--accent-clr);
+    }
+}
+#sidebar a{
+    border-radius: .5em;
+    padding: .85em;
+    margin-bottom: 10px;
+    color: var(--text-clr);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+#sidebar img{
+    flex-shrink: 0;
+    fill: var(--text-clr);
+}
+#sidebar span{
+    flex-grow: 1;
+}
+#sidebar a:hover{
+    background-color: var(--hover-clr);
+}
+
+/*3. Main content*/
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: url('images.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+/*#background-image{
+    background-size: cover;
+    background-repeat: no-repeat;
+}*/
+/* Styling #part-1 */
+#part-1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+/* Left Section: Welcome Message */
+#part-1 h2, .content1 h2 {
+    font-size: 2rem;
+    color: rgb(1, 5, 27);
+    text-align: center;
+    margin: 0;
+    animation: fadeIn 2s ease-in-out; 
+}
+
+/* Right Section: Image */
+#part-1 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    justify-content: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#part-1 div {
+    flex: 1; 
+    text-align: center; 
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* General Paragraph Styles */
+.main-content p {
+    line-height: 1.6;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #part-1 {
+        flex-direction: column; /* Stack sections vertically */
+        text-align: center;
+    }
+
+    #part-1 img {
+        max-width: 80%;
+    }
+}
+#one{
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    img{
+        height: 100%;
+        width: 90px;
+    }
+}
+.describe{
+    flex: 1;
+    text-align: center;
+    p{
+        font-size: 14px;
+    }
+}
+/*4. Footer*/
+footer{
+    background-color: rgb(1, 5, 27);
+}
+.section{
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 4em;
+    justify-content: center;
+    color: white;
+}
+.section ul{
+    list-style: none;
+}
+.section h5{
+    font-weight: 800;
+    font-size: 20px;
+}
